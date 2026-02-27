@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/experience.css') }}">
+
+</head>
+<body>
+         <img class="photo" src="logo2.png" alt="AIコミュ ロゴ" />
+        <p class="sub">こちらで用意した画像を、AIで修正する体験です。</p>
+   <div class="container">
+            <div class="app" id="app">
+
+    <!-- 上：アバター -->
+    <header class="avatars">
+      <div class="avatar ai">
+      <img id="aiAvatar"
+          src="{{ url_for('static', filename='images/ai.png') }}">AI
+      
+
+      </div>
+      
+           <div class="avatar user">
+        <img id="aiAvatar"
+        src="{{ url_for('static', filename='images/ai.png') }}">あなた
+      
+
+      </div>
+    </header>
+
+    <!-- 中：チャット（ここにJSがバブルを追加する） -->
+    <main class="chat" id="chatArea" aria-live="polite"></main>
+    </div>
+    <!-- 下：操作エリア -->
+    <div class="chatFooter">
+      <form class="inputRow" id="inputForm">
+        <input id="userInput" type="text" placeholder="ここに入力…" autocomplete="off" />
+        <button id="btnSend" type="submit" class="send-btn">送信</button>
+      </form>
+     </div>
+   </div>
+      <div class="btnRow" id="choiceRow">
+        <button id="btnYes" class="primaryBtn">Yes</button>
+        <button id="btnNo" class="noBtn">No</button>
+      </div>
+       <script src="{{ url_for('static', filename='js/experience.js') }}"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,436 @@
+/* 全体 */
+body {
+  background: linear-gradient(
+    135deg,
+    #f2caca,
+    #f2e0ca,
+    #f2f2ca,
+    #caf2ca,
+    #cae6f2,
+    #cacaf2,
+    #e6caf2
+  );
+  background-size: 400% 400%;
+  animation: rainbowMove 40s ease infinite;
+}  
+p {
+  text-align: center;
+  margin: 12px auto;
+  width: 100%;
+}
+.sub { 
+  color: #00F;
+}
+
+body::before {
+  background: rgba(0,0,0,0.3);
+}
+
+@keyframes rainbowMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+    body{
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: 'Noto Sans JP'  sans-serif;
+      font-weight: 400;
+      letter-spcing: 0.03em;
+      line-feight:1.6;
+}
+
+     
+  
+    .hero{
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px 16px;
+    }
+
+    /* 真ん中ブロック */
+    .centerBlock{
+      text-align: center;
+      width: min(640px, 92vw);
+
+      /* ここで上に持ち上げる（好みで調整） */
+      transform: translateY(-50px);
+    }
+
+ /* ロゴ */
+.photo{
+  width: min(240px, 60vw);
+  height: auto;
+  display: block;
+  margin: 10px auto 10px;
+  background: Transparent;
+ }
+.sub{
+ color: blue;
+}
+.container{
+  height: min(750px,100%);
+  width: min(900px,100%);
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid silver;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background: #FFDBC9; 
+  box-shadow: 0 6px 18px rgba(0,0,0,0,08);
+}
+.guide-text {/* チャット全体エリア */
+
+  text-aligin: center;
+  line-height: 1.6; 
+  font-size: 16px;
+  margin-botttom: 8px; 
+  
+}
+.desc {
+  color: gold;
+  font-size: 24px;
+   }
+
+/* チャット表示エリア */
+#app{
+  height: min(700px,100%);
+  width: min(850px,100%);
+  background: rgba(255,255,255,0.7);
+  border-radius: 10px;
+  padding: 15px;
+  overflow-y: auto;
+  margin: 0 auto 15px;
+  box-sizing: border-box;
+  background: #F8F8FF; 
+  border: 4px solid #FFC7AF;
+  flex-shrink: 0;
+  min-height: 70vh;
+}
+
+.avatars{
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  background: Transparent;
+}
+.card{
+  width: 140px;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+.avatar-frame{
+  width: 150px;
+  aspect-ratio: 1 / 1; /* 正方形枠 */
+  margin: 0 auto;
+  overflow: hidden;
+  border: 5px solid pink;
+  background: Transparent;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.avatar-frame.rounded { border-radius: 18px; }
+/* 動画を枠いっぱいに */
+.avatar-video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* 顔アップなら cover、全身なら contain に変える */
+  object-position: center;
+  display: block;
+  border: 2px solid silver;
+
+}
+
+
+.avatar img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* チャット全体を縦に積む */
+#chatArea{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;          /* ← これでくっつかない */
+  padding: 14px;
+  overflow-y: auto;
+}
+
+.controls{
+  border-top: 1px solid rgba(0,0,0,.08);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid gold;
+}
+
+.btn:disabled{
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+/* バブル（ここ大事：HTMLに書かない。JSがclass付ける） */
+.bubble{
+  max-width: 50%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  line-height: 1.5;
+  word-break: break-word;
+  white-space: pre-wrap;
+  box-shadow: 0 2px 6px raba(0,0,0,0.08);
+  margin: 12px;
+}
+
+.bubble.ai{
+  align-self: flex-start;
+  background: #FFFFEE;
+  border: 1px solid rgba(0,0,0,.10);
+}
+
+.bubble.user{
+  align-self: flex-end;
+  background: #EEFFFF;
+  color: #000;
+}
+
+/* …ローディング（点々点） */
+.bubble.loading{
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.input-row {
+  display: flex;
+  align-items: center; /* ← これが一番大事 */
+  gap: 8px;
+  width: 100%;
+}
+
+/* 入力＋送信 */
+.chatFooter{
+  display:flex;
+  gap:8px;
+  padding:12px;
+  background: rgba(0,0,0,0.03);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  flex-shrink: 0;
+  border: 3px solid #FFC7AF;
+ 
+}
+.camera-btn {
+  font-size: 15px;
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid rgba(255,255,255,0.55);
+  background: rgba(255,182,193,0.7);
+  margin: 3px;
+}
+ /* 入力フォーム */
+#chatForm{
+  display: flex;                 /* ←これが必要 */
+  justify-content: center;       /* 中央寄せ */
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+ }
+#inputUser {
+  flex: 1; /* 入力欄を伸ばす */
+}
+
+
+/* 入力欄 */
+#inputUser{
+  width: min(600px, 70vw);       /* 短すぎ問題を潰す */
+  min-width: 240px;
+  height: 44px;
+  padding: 10px 12px;
+  font-size: 20px;
+  box-sizing: border-box; 
+  background: #F8F8FF;
+
+}
+
+
+
+.btn-area{
+  margin: 10px 0 16px;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+.btn-area button{
+  width: 150px;
+  height: 80px;
+  font-size: 30px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+/* 送信ボタン */
+.send-btn{
+  height: 44px;
+  padding: 0 18px;
+  font-size: 16px;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  border: 2px solid rgba(255,255,255,0.55);
+  background: #3366FF;
+  color: white;
+}
+
+
+.wrap{
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 18px;
+}
+
+.title{
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.desc{
+  margin: 0 0 18px;
+  line-height: 1.6;
+}
+.btnRow{
+  margin: 10px 0 16px;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  flex-shrink: 0;
+}
+.btnRow button{
+  width: 150px;
+  height: 80px;
+  font-size: 30px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  border: 3px solid rgb(255 255 255);
+}
+.primaryBtn {
+  margin: 10px 0 16px;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.primaryBtn{
+  border: 2px solid rgba(255,255,255,.7);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+
+  padding: 12px 26px;
+  border-radius: 14px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  cursor: pointer;
+
+  backdrop-filter: blur(6px);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.25);
+
+  transition:
+    transform .12s ease,
+    box-shadow .12s ease,
+    background .12s ease,
+    color .12s ease;
+}
+.primaryBtn:hover{
+  background: rgba(255,255,255,.18);
+  box-shadow:
+    0 10px 26px rgba(0,0,0,.28);
+}
+.primaryBtn:active{
+  transform: translateY(2px) scale(0.97);
+  background: rgba(255,255,255,.28);
+
+  box-shadow:
+    0 4px 10px rgba(0,0,0,.35),
+    inset 0 3px 8px rgba(0,0,0,.25);
+}
+.noBtn {
+  margin: 10px 0 16px;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.noBtn{
+  border: 2px solid rgba(255,255,255,.7);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+
+  padding: 12px 26px;
+  border-radius: 14px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  cursor: pointer;
+
+  backdrop-filter: blur(6px);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.25);
+
+  transition:
+    transform .12s ease,
+    box-shadow .12s ease,
+    background .12s ease,
+    color .12s ease;
+}
+.noBtn:hover{
+  background: rgba(255,255,255,.18);
+  box-shadow:
+    0 10px 26px rgba(0,0,0,.28);
+}
+.noBtn:active{
+  transform: translateY(2px) scale(0.97);
+  background: rgba(255,255,255,.28);
+
+  box-shadow:
+    0 4px 10px rgba(0,0,0,.35),
+    inset 0 3px 8px rgba(0,0,0,.25);
+}
+
+
+.primaryBtn{
+   color: #2C7CFF;
+}
+.noBtn{
+ 
+  color: #FF5192;
+}
+#cutinLogo {
+    display: none;
+}
+.bubble img {
+  width: 100%;
+  max-width: 300px;
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+@media (max-width; 480px) {
+   .avatars{ padding: 6px 12px; }
+}
+

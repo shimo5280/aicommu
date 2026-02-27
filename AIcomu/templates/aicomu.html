@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/aicomu.css') }}">
+
+</head>
+<body>
+
+
+     <img class="photo"
+          src="{{ url_for('static', filename='images/logo2.png') }}">
+      
+
+       <p class="sub">自分の画像を、AIで修正するためのアプリです。</p>
+    
+   <div class="container">
+            
+      <div class="app" id="app">
+
+    <!-- 上：アバター -->
+    <header class="avatars">
+      <div class="avatar ai">
+        
+      <img id="aiAvatar"
+        src="{{ url_for('static', filename='images/ai.png') }}">
+      
+
+       </div>
+             <div class="avatar user">
+        
+         <img id="userAvatar"
+               src="{{ url_for('static', filename='images/user.png') }}">
+      
+
+      </div>
+    </header>
+
+         <main class="chat" id="chatArea" aria-live="polite"></main>
+
+      <!-- 画像プレビュー（確認できるように） -->
+      <div class="previewRow">
+              </div>
+    </div>
+      <div class="chatFooter">
+        <form class="inputRow" id="formInput">
+          <label class="camera-btn">
+            📷 画像1
+            <input type="file" id="imageInput1" accept="image/*" hidden>
+          </label>
+
+          <label class="camera-btn">
+            📷 画像2
+            <input type="file" id="imageInput2" accept="image/*" hidden>
+          </label>
+
+            
+      <input id="inputUser" type="text" placeholder="ここに入力…" autocomplete="off" />
+        <button id="sendBtn" type="submit" class="send-btn">送信</button>
+      </form>
+     
+  </div>
+   </div>
+      <div class="btnRow" id="choiceRow">
+        <button id="yesBtn" class="primaryBtn">Yes</button>
+        <button id="noBtn" class="noBtn">No</button>
+      </div>
+       <script src="{{ url_for('static', filename='js/aicomu.js') }}"></script>
+ 
+</body>
+</html>
